@@ -1,0 +1,17 @@
+{% extends "basic.html" %}
+
+{% block title %}<title>Главная страница</title>{% endblock %}
+
+{% block content %}
+    <h1>Главная страница</h1>
+    <h3>Общее описание наших товаров</h3>
+    {% for product in products %}
+        <div>
+            <img style="max-width:100px; max-height:100px;"
+                src="{{ product.image.url }}">
+            <p>Название: {{product.name}}</p>
+            <p>Описание: {{product.description}}</p>
+        </div>
+        {% if not forloop.last %}<p>-----------------------------------------------------------</p>{% endif %}
+    {% endfor %}
+{% endblock %}

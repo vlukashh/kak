@@ -1,0 +1,18 @@
+{% extends "basic.html" %}
+
+{% block title %}<title>Отдельный товар/услуга</title>{% endblock %}
+
+{% block content %}
+    <div>
+        <img style="max-width:100px; max-height:100px;"
+                src="{{ product.image.url }}">
+        <p>Название: {{product.name}}</p>
+        <p>Описание: {{product.description}}</p>
+    </div>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Заказать">
+    </form>
+{% endblock %}

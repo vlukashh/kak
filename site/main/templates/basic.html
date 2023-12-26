@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}<title>Title</title>{% endblock %}
+    {% load static %}
+</head>
+<body>
+    <div style="display-flex gap: 5px">
+    <a href="{% url 'main:index' %}">ГЛАВНАЯ СТРАНИЦА/</a>
+    <a href="{% url 'main:service_list' %}">ТОВАРЫ/УСЛУГИ</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'main:profile' %}">ПРОФИЛЬ/</a>
+        <a href="{% url 'main:logout' %}">ВЫЙТИ</a>
+
+    {% else %}
+      <a href="{% url 'main:register' %}">РЕГИСТРАЦИЯ/</a>
+      <a href="{% url 'main:login' %}">ВХОД</a>
+    {% endif %}
+        </div>
+  <div>{% block content %}{% endblock %}</div>
+</body>
+</html>
